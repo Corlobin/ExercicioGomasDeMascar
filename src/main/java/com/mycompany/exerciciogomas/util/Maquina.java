@@ -5,36 +5,47 @@
  */
 package com.mycompany.exerciciogomas.util;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Ricardo
  */
 public class Maquina {
-    public EstadoMaquina semMoeda;
-    public EstadoMaquina gomaVendida;
-    public EstadoMaquina recebeuMoeda;
-    public EstadoMaquina gomasAcabaram;
-    
+    public HashMap<String, EstadoMaquina> maquinas;
     public EstadoMaquina estadoAtual;
-    private int quantidadeMoedas;
+    public int gomas;
 
-    public Maquina(int quantidadeMoedas) {
-        this.semMoeda = new EstadoSemMoeda(this);
-        this.gomaVendida = new EstadoGomaVendida(this);
-        this.recebeuMoeda = new EstadoRecebeuMoeda(this);
-        this.gomasAcabaram = new EstadoGomasAcabaram(this);
+    public Maquina(int gomas) {
+        maquinas = new HashMap<>();
+        maquinas.put("sem moeda", new EstadoSemMoeda(this));
+        maquinas.put("gomas vendidas", new EstadoGomaVendida(this));
+        maquinas.put("recebeu moeda", new EstadoRecebeuMoeda(this));
+        maquinas.put("gomas acabaram", new EstadoGomasAcabaram(this));        
         
-        this.setState(this.semMoeda);
-        this.quantidadeMoedas = quantidadeMoedas;
+        this.setState("sem moeda");
+        this.gomas = gomas;
                         
     }
     public EstadoMaquina getState(){
         return this.estadoAtual;
     }
-    public void setState(EstadoMaquina estado) {
-        this.estadoAtual = estado;
+    public void setState(String estado) {
+        try {
+            this.estadoAtual = maquinas.get(estado);
+        } catch(Exception e) {
+            System.out.println("Erro ao inserir moeda, estado " + estado + " não existe!");
+        }
     }
-    
+    public void insereMoeda(int moeda) {
+        this.estadoAtual.insereMoeda(moeda);
+    }
+    public void acionaAlavanca() {
+        this.estadoAtual.acionaAlavanca();
+    }
+    public void entregaGoma() {        
+        this.estadoAtual.insereMoeda(0);
+    }
     
     
           

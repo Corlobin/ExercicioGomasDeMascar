@@ -3,13 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.mycompany.exerciciogomas.util;
 
 /**
  *
- * @author Ricardo
+ * @author 20122bsi0387
  */
-public interface EstadoMaquina {
-    public void insereMoeda(int moedas);
-    public void acionaAlavanca();
+public abstract class AbstractEstadoMaquina implements EstadoMaquina {
+    protected Maquina maquina;
+    public AbstractEstadoMaquina(Maquina maquina) {
+        this.maquina = maquina;
+    }
+    
+    
 }

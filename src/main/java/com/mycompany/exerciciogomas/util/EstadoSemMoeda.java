@@ -9,35 +9,28 @@ package com.mycompany.exerciciogomas.util;
  *
  * @author Ricardo
  */
-public class EstadoSemMoeda implements EstadoMaquina {
+public class EstadoSemMoeda extends AbstractEstadoMaquina {
 
-    EstadoSemMoeda(Maquina aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    EstadoSemMoeda(Maquina maquina) {
+        super(maquina);
     }
 
     @Override
-    public void insereMoeda() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void ejetaMoeda() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void insereMoeda(int moedas) {
+        if(moedas == 1) {
+            System.out.println("Recebeu moeda! " + moedas);
+            this.maquina.setState("recebeu moeda");            
+        } else { 
+            System.out.println("Moeda invalida");
+            
+        }
+        
     }
 
     @Override
     public void acionaAlavanca() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Você ainda não inseriu uma moeda!");
     }
 
-    @Override
-    public void entregaGoma() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void semGomas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

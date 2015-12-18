@@ -9,35 +9,20 @@ package com.mycompany.exerciciogomas.util;
  *
  * @author Ricardo
  */
-public class EstadoGomasAcabaram implements EstadoMaquina{
+public class EstadoGomasAcabaram extends AbstractEstadoMaquina{
 
-    EstadoGomasAcabaram(Maquina aThis) {
-
+    EstadoGomasAcabaram(Maquina maquina) {
+        super(maquina);
     }
 
     @Override
-    public void insereMoeda() {
-    
-    }
-
-    @Override
-    public void ejetaMoeda() {
-    
+    public void insereMoeda(int moedas) {
+        System.out.println("Sem gomas de mascar!");
     }
 
     @Override
     public void acionaAlavanca() {
-    
+        System.out.println("Sem gomas de mascar!");
     }
 
-    @Override
-    public void entregaGoma() {
-    
-    }
-
-    @Override
-    public void semGomas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

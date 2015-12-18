@@ -9,35 +9,27 @@ package com.mycompany.exerciciogomas.util;
  *
  * @author Ricardo
  */
-public class EstadoGomaVendida implements EstadoMaquina {
-
-    public EstadoGomaVendida(Maquina aThis) {
-        
-    }
-
-    @Override
-    public void insereMoeda() {
+public class EstadoGomaVendida extends AbstractEstadoMaquina {
     
+    public EstadoGomaVendida(Maquina maquina) {
+        super(maquina);
     }
-
-    @Override
-    public void ejetaMoeda() {
     
+    @Override
+    public void insereMoeda(int moedas) {
+        if(this.maquina.gomas > 0) {
+            System.out.println("Goma vendida! aproveite");
+            this.maquina.setState("sem moeda");
+        } else {
+            System.out.println("Sem goma de mascar!");
+            this.maquina.setState("gomas acabaram");
+                    
+        }
     }
 
     @Override
     public void acionaAlavanca() {
-    
     }
 
-    @Override
-    public void entregaGoma() {
-    
-    }
-
-    @Override
-    public void semGomas() {
-
-    }
     
 }
