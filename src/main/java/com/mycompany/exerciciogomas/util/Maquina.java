@@ -46,6 +46,14 @@ public class Maquina {
     public void entregaGoma() {        
         this.estadoAtual.insereMoeda(0);
     }
+
+    public int getGomas() {
+        return gomas;
+    }
+
+    public EstadoMaquina getEstadoAtual() {
+        return estadoAtual;
+    }
     
     
           
